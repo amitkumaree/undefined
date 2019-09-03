@@ -1,5 +1,8 @@
 # UPSUx
 
+using the following for the project
+1. https://ng-bootstrap.github.io/#/getting-started
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.2.
 
 ## Development server
