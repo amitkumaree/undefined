@@ -1,0 +1,21 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title"></h4>
+    <!-- <button type="button" class="close" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button> -->
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+        <label for="selectClass">Choose Class</label>
+        <select class="form-control" id="class" [(ngModel)]="class.class_id">
+          <option *ngFor="let cl of class.classes" [value]="cl.class_id"> {{cl.class_name}}</option>
+        </select>
+      </div>
+    <div class="form-group">
+      <label for="classSectionName">Class Section</label>
+      <input type="text" class="form-control" id="classSection" [(ngModel)]="class.class_section"
+        placeholder="Name of Class Section">
+    </div>
+    <button (click)="cancel()" type="submit" class="btn btn-secondary ">Cancel</button>
+    <button (click)="close()" type="submit" class="btn btn-primary float-right">Save</button>
+  </div>

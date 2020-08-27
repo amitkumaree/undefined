@@ -1,67 +1,64 @@
 <footer class="mainfooter" role="contentinfo">
-    <div class="footer-middle">
+  <div class="footer-middle">
     <div class="container">
       <div class="row">
         <div class="col-md-3 col-sm-6">
-          <!--Column1-->
-          <div class="footer-pad">
-            <h4>Heading 1</h4>
+          <div class="footer-pad" *ngIf="showlinks">
+            <h4>Admin</h4>
             <ul class="list-unstyled">
               <li><a href="#"></a></li>
-              <li><a href="#">Link 1</a></li>
-              <li><a href="#">Link 2</a></li>
-              <li><a href="#">Link 3</a></li>
-              <li><a href="#">Link 4</a></li>
-              <li><a href="#">Link 5</a></li>
+              <li><a [routerLink]="['/sm']">Student Management</a></li>
+              <li><a [routerLink]="['/tm']">Teacher Management</a></li>
+              <li><a [routerLink]="['/trd']">Teacher Role Management</a></li>
             </ul>
           </div>
         </div>
         <div class="col-md-3 col-sm-6">
-          <!--Column1-->
-          <div class="footer-pad">
-            <h4>Heading 2</h4>
+          <div class="footer-pad" *ngIf="showlinks">
+            <!-- <h4>Class</h4>
             <ul class="list-unstyled">
-              <li><a href="#">Link 5</a></li>
+              <li><a [routerLink]="['/csfess']">Class Subject For Exam Setup</a></li>
               <li><a href="#">Link 6</a></li>
               <li><a href="#">Link 7</a></li>
               <li><a href="#">Privacy Policy</a></li>
               <li><a href="#">FAQs</a></li>
               <li><a href="#">Webmaster</a></li>
-            </ul>
+            </ul> -->
           </div>
         </div>
         <div class="col-md-3 col-sm-6">
-          <!--Column1-->
-          <div class="footer-pad">
-            <h4>Heading 3</h4>
+          <div class="footer-pad" *ngIf="showlinks">
+            <h4>Subject</h4>
             <ul class="list-unstyled">
-              <li><a href="#">Link 1</a></li>
-              <li><a href="#">Link 1</a></li>
+              <li><a [routerLink]="['/subject']">Add Subject</a></li>
+              <!-- <li><a href="#">Link 1</a></li>
               <li><a href="#">Lib Department</a></li>
               <li><a href="#">Link 1</a></li>
               <li><a href="#">Link 1</a></li>
               <li>
                 <a href="#"></a>
-              </li>
+              </li> -->
             </ul>
           </div>
         </div>
-          <div class="col-md-3">
-              <h4>Follow Us</h4>
-              <ul class="social-network social-circle">
-               <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-               <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-              </ul>				
-          </div>
+        <div class="col-md-3 text-center" style="min-height: 6vw;">
+          <h4>Follow Us</h4>
+          <ul class="social-network social-circle">
+            <li><a href="" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+          </ul>
+        </div>
       </div>
+      <!-- <div class="row" style="min-height: 22vh;">
+
+      </div> -->
       <div class="row">
-          <div class="col-md-12 copy">
-              <p class="text-center">&copy; Copyright 2018 - Company Name.  All rights reserved.</p>
-          </div>
+        <div class="col-md-12 copy">
+          <p class="text-center">&copy; Copyright 2020 - U.P. Public School. All rights reserved.</p>
+        </div>
       </div>
-  
-  
+
+
     </div>
-    </div>
-  </footer>
-    
+  </div>
+</footer>

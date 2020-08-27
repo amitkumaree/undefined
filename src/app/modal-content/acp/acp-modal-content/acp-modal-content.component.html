@@ -1,0 +1,39 @@
+<div class="modal-header">
+    <!-- <h4 class="modal-title" id="modal-basic-title"></h4> -->
+    <h4 class="modal-title" id="modal-basic-title">{{class.operation}} </h4>
+    <!-- <button type="button" class="close" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button> -->
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="monthName">Month Name</label>
+     <select  class="form-control" id="monthName" [(ngModel)]="class.month_id">
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+          </select>
+    </div>
+    <div class="form-group">
+      <label for="weekNo">Week No</label>
+      <input type="text" class="form-control" id="weekNo" [(ngModel)]="class.week_no"
+        placeholder="Week No">
+    </div>
+    <div class="form-group">
+        <label for="workingDays">Working Days</label>
+        <input type="text" class="form-control" id="workingDays" [(ngModel)]="class.working_days"
+          placeholder="Working Days">
+      </div>
+    <button (click)="cancel()" type="submit" class="btn btn-secondary ">Cancel</button>
+    <button (click)="close()" type="submit" class="btn btn-primary float-right">Save</button>
+  </div>
+  

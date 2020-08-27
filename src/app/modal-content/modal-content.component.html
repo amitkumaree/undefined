@@ -1,0 +1,28 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{syllabus.Syllabus.operation}} </h4>
+  <!-- <button type="button" class="close" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button> -->
+</div>
+<div class="modal-body">
+  <div class="form-group">
+    <label for="chapterName">Chapter Name</label>
+    <input type="text" class="form-control" id="chapterName" [(ngModel)]="syllabus.Syllabus.chapter_name"
+      placeholder="Name of chapter" [disabled]="(syllabus.operation === 'Delete')">
+  </div>
+  <div class="form-group">
+    <label for="topicName">Topic Name</label>
+    <input type="text" class="form-control" id="topicName" [(ngModel)]="syllabus.Syllabus.topic_name"
+      placeholder="Name of topic" [disabled]="(syllabus.operation === 'Delete')">
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea class="form-control" id="description" [(ngModel)]="syllabus.Syllabus.description"
+    placeholder="Describe" rows="3" [disabled]="(syllabus.operation === 'Delete')"></textarea>
+  </div>
+  <button (click)="cancel()" type="submit" class="btn btn-secondary ">Cancel</button>
+  <button *ngIf="!(syllabus.Syllabus.operation === 'Delete')" (click)="close()" type="submit"
+  class="btn btn-primary float-right">Save</button>
+  <button *ngIf="(syllabus.Syllabus.operation === 'Delete')" (click)="close()" type="submit"
+  class="btn btn-primary float-right">Confirm</button>
+</div>

@@ -1,0 +1,55 @@
+<!-- <app-header></app-header> -->
+<div class="container" style="min-height: 58vh;">
+  <div class="row">
+    <div class="col-12" *ngIf="spinner">
+      <div class="spinner-grow text-primary spinner-in-middle" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <div class="col-12" *ngIf="!spinner">
+      <div class="row">
+        <div class="col-12">
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <button id="createNotification" type="button" class="btn btn-info btn-circle float-right mt-3"
+                title="Add new Student" (click)="onAddClick()">
+                <i class="fa fa-plus" style="font-size:1.2rem" aria-hidden="true"></i>
+              </button>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-12 div-with-height-and-scroll">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Serial No</th>
+                <th scope="col">Class</th>
+                <th scope="col">Subject</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let clsSubject of clsSubjects; index as i">
+                <td scope="row">{{clsSubject.ID}}</td>
+                <td scope="row">{{clsSubject.CLASS}}</td>
+                <td>
+                  {{clsSubject.SUBJECT}}
+                </td>
+                <td>
+                  <span style="margin-right: 3%">
+                    <i (click)="oneditClick(clsSubject)" class="fa fa-pencil fa-lg text-info pointer" aria-hidden="true"></i>
+                  </span>
+                  <!-- <span>
+                    <i (click)="ondeleteClick(clsSubject)" class="fa fa-trash fa-lg text-danger pointer" aria-hidden="true"></i>
+                  </span> -->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

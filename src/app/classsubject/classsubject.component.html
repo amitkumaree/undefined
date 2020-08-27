@@ -1,0 +1,91 @@
+<!-- <app-header></app-header> -->
+<div class="container" style="min-height: 58vh;">
+
+  <div class="row">
+    <div class="col-12" *ngIf="spinner">
+      <div class="spinner-grow text-info" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <div class="col-12" *ngIf="!spinner">
+      <div class="row">
+
+        <div class="col-12">
+          <div class="form-row">
+            <div class="form-group col-md-4" *ngIf="showAdd">
+              <label for="Class">Choose Class</label>
+              <select class="form-control" id="Class"  [(ngModel)]="selected._class">
+                <option *ngFor="let class of classes" [value]="class.class_id"> {{class.class_name}}</option>
+              </select>
+            </div>
+            <div class="form-group col-md-3" *ngIf="showAdd">
+              <label for="subject">Choose Subject</label>
+              <select class="form-control" id="subject" [(ngModel)]="selected.subject">
+                <option *ngFor="let subject of subjects" [value]="subject.subject_id"> {{subject.subject_name}}</option>
+              </select>
+            </div>
+            <div cclass="form-group col-md-3" *ngIf="showAdd">
+              <label for="academicYear">Academic Year</label>
+              <input type="text" class="form-control" type="number" id="academicYear" placeholder="Academic Year" [(ngModel)]="selected.academicyear" />
+            </div>
+            <div class="form-group col-md-2" style="padding-top: 14px;">
+              <button id="createNotification" type="button" class="btn btn-info float-right mt-3"
+              title="Cancel classsubject" (click)="showAdd = !showAdd" *ngIf="showAdd">
+              cancel
+            </button>
+              <button id="createNotification" type="button" class="btn btn-primary float-right mt-3"
+              title="Save classsubject" (click)="onSave()" *ngIf="showAdd">
+              save
+            </button>
+            <button id="createNotification" type="button" class="btn btn-primary btn-circle float-right mt-3"
+                title="Add new classsubject" (click)="onAddClick()" *ngIf="!showAdd">
+                <i class="fa fa-plus" style="font-size:1.2rem" aria-hidden="true"></i>
+            </button>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="col-12 div-with-height-and-scroll">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+
+                <th scope="col">Class Name</th>
+
+                <th scope="col">Subject Name</th>
+                <th scope="col">Academic Year</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let classsubject of classsubjects; index as i">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>
+                  {{classsubject.class_name}}
+                </td>
+                <td>
+                  {{classsubject.subject_name}}
+                </td>
+                <td>
+                  {{classsubject.academic_year}}
+                </td>
+                <td>
+                  <!-- <span style="margin-right: 3%">
+                    <i (click)="oneditClick(classsubject)" class="fa fa-pencil fa-lg text-warning"
+                      aria-hidden="true"></i>
+                  </span> -->
+                  <span>
+                    <i (click)="ondeleteClick(classsubject)" class="fa fa-trash fa-lg text-danger"
+                      aria-hidden="true"></i>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

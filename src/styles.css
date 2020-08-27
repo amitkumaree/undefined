@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+.div-with-height-and-scroll {
+  max-height: 70vh; overflow-y: hidden;
+}
+
+.div-with-height-and-scroll:hover {
+  overflow-y: auto;
+}
+thead tr:nth-child(1) th{
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.btn-circle {
+  width: 50px;
+  height: 50px;
+  padding: 7px 10px;
+  border-radius: 25px;
+  font-size: 10px;
+  text-align: center;
+}
+.pointer{
+  cursor: pointer;
+}
+.spinner-in-middle{
+  margin-top: 20%;
+  margin-left: 43%;
+}

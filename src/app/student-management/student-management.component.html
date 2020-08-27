@@ -1,0 +1,72 @@
+<!-- <app-header></app-header> -->
+<div class="container" style="min-height: 58vh;">
+  <div class="row">
+    <div class="col-12" *ngIf="spinner">
+      <div class="spinner-grow text-primary spinner-in-middle" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <div class="col-12" *ngIf="!spinner">
+      <div class="row">
+        <div class="col-12">
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <input type="text" [(ngModel)]="filterStudent"
+              class="form-control mt-4" placeholder="Search student details">
+            </div>
+            <div class="form-group col-md-4 text-center mt-4">
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="customSwitch1" [ngModel]="showDeletedStudent" (change)="showDeletedToggle($event)">
+                <label class="custom-control-label" for="customSwitch1">Show Deleted Students</label>
+              </div>
+            </div>
+
+            <div class="form-group col-md-4">
+              <button id="createNotification" type="button" class="btn btn-info btn-circle float-right mt-3"
+                title="Add new Student" (click)="onAddClick()">
+                <i class="fa fa-plus" style="font-size:1.2rem" aria-hidden="true"></i>
+              </button>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-12 div-with-height-and-scroll table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Registration No.</th>
+                <th scope="col">Name</th>
+                <th scope="col">Class / Section</th>
+                <th scope="col">Date Of Birth</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let student of studentToShow | studentfilter:filterStudent; index as i">
+                <td scope="row">{{student.RegistrationNo}}</td>
+                <td>
+                  {{student.Name}}
+                </td>
+                <td>
+                  {{student.Class}} / {{student.Section}}
+                </td>
+                <td>
+                  {{student.DOB | date}}
+                </td>
+                <td>
+                  <span style="margin-right: 3%">
+                    <i (click)="oneditClick(student)" class="fa fa-pencil fa-lg text-info pointer" aria-hidden="true"></i>
+                  </span>
+                  <span *ngIf="student.DateOfBirth">
+                    <i (click)="ondeleteClick(student)" class="fa fa-trash fa-lg text-danger pointer" aria-hidden="true"></i>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

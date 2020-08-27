@@ -1,0 +1,67 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{student.operation}}</h4>
+  <!-- <button type="button" class="close" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button> -->
+</div>
+<div class="modal-body">
+  <form [formGroup]="studentEntryForm">
+    <div class="form-group">
+      <label for="Registration">Registration Number</label>
+      <input type="text" [attr.disabled]="student.operation === 'Delete' ? 'disabled' : null" class="form-control"
+        id="Registration" formControlName="regNo" [(ngModel)]="student.RegistrationNo"
+        [ngClass]="{ 'is-invalid': submitted && f.regNo.errors }" placeholder="Registration number">
+      <div *ngIf="submitted && f.regNo.errors" class="invalid-feedback">
+        <div *ngIf="f.regNo.errors.required">Registration number is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="StudentName">Student Name</label>
+      <input type="text" [attr.disabled]="student.operation === 'Delete' ? 'disabled' : null" class="form-control"
+        id="StudentName" formControlName="name" [(ngModel)]="student.Name"
+        [ngClass]="{ 'is-invalid': submitted && f.name.errors }" placeholder="Name of student">
+      <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+        <div *ngIf="f.name.errors.required">Name of student is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="classStandard">Class</label>
+      <!-- <input type="text" class="form-control" id="classStandard" [(ngModel)]="student.Class"
+        placeholder="Name of Class Standard"> -->
+      <select [attr.disabled]="(student.operation === 'Edit' || student.operation === 'Delete') ? 'disabled' : null"
+        class="form-control" id="className" formControlName="class" [(ngModel)]="student.Class"
+        [ngClass]="{ 'is-invalid': submitted && f.class.errors }">
+        <option *ngFor="let class of classes" [value]="class">{{class}}</option>
+      </select>
+      <div *ngIf="submitted && f.class.errors" class="invalid-feedback">
+        <div *ngIf="f.class.errors.required">Choose atleast one class for the student</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="classStandard">Section</label>
+      <input type="text" class="form-control" [attr.disabled]="student.operation === 'Delete' ? 'disabled' : null"
+        id="classStandard" formControlName="sec" [(ngModel)]="student.Section"
+        [ngClass]="{ 'is-invalid': submitted && f.sec.errors }" placeholder="Name of section">
+      <div *ngIf="submitted && f.sec.errors" class="invalid-feedback">
+        <div *ngIf="f.sec.errors.required">Section of student is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="classStandard">Date Of Birth</label>
+      <input type="text" [attr.disabled]="student.operation === 'Delete' ? 'disabled' : null"
+        onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control" id="inputDOB"
+        formControlName="dob" [(ngModel)]="student.DOB" placeholder="DD/MM/YYYY"
+        [ngClass]="{ 'is-invalid': submitted && f.dob.errors }">
+      <div *ngIf="submitted && f.dob.errors" class="invalid-feedback">
+        <div *ngIf="f.dob.errors.required">Date of birth is required</div>
+      </div>
+    </div>
+    <button (click)="cancel()" type="button" class="btn btn-light ">Cancel</button>
+    <button *ngIf="student.operation !== 'Delete' && student.DateOfBirth !== null" (click)="close()" type="submit"
+      class="btn btn-info float-right">Save</button>
+    <button *ngIf="student.operation === 'Delete'" (click)="close()" type="submit"
+      class="btn btn-info float-right">Delete</button>
+    <button *ngIf="student.operation === 'ReActivate' && student.DateOfBirth === null" (click)="close()" type="submit"
+      class="btn btn-info float-right">Re-Activate</button>
+  </form>
+</div>

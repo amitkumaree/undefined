@@ -1,0 +1,39 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{teacher.operation}}</h4>
+</div>
+<div class="modal-body">
+  <form [formGroup]="teacherMstForm">
+    <div class="form-group">
+      <label for="className">Teacher Name</label>
+      <input type="text" [attr.disabled]="teacher.operation === 'Delete' ? 'disabled' : null" class="form-control"
+        id="className" formControlName="TeacherName" [(ngModel)]="teacher.Name"
+        [ngClass]="{ 'is-invalid': submitted && f.TeacherName.errors }" placeholder="Name of Teacher">
+      <div *ngIf="submitted && f.TeacherName.errors" class="invalid-feedback">
+        <div *ngIf="f.TeacherName.errors.required">Name of Teacher is required</div>
+      </div>
+    </div>
+    <div class="form-group" *ngIf="teacher.operation !== 'Add'">
+      <label for="classStandard">Login ID</label>
+      <input type="text" class="form-control"
+        [attr.disabled]="(teacher.operation === 'Edit' || teacher.operation === 'Delete') ? 'disabled' : null"
+        id="classStandard" formControlName="LoginID" [(ngModel)]="teacher.TeacherLoginID" placeholder="Login Id">
+    </div>
+    <div class="form-group">
+      <label for="classStandard">Is Admin</label>
+      <!-- <input type="text" class="form-control" id="classStandard"
+        [attr.disabled]="teacher.operation === 'Edit' ? 'disabled' : null" [(ngModel)]="teacher.IsAdmin"
+        placeholder="Is this teacher Admin"> -->
+      <select class="form-control" [attr.disabled]="teacher.operation === 'Delete' ? 'disabled' : null" id="className"
+        [(ngModel)]="teacher.IsAdmin" formControlName="IsAdmin">
+        <option value="Y">Yes</option>
+        <option value="N">NO</option>
+      </select>
+    </div>
+    <button (click)="cancel()" type="submit" class="btn btn-light ">Cancel</button>
+    <button *ngIf="teacher.operation !== 'Delete'" (click)="close()" type="submit"
+      class="btn btn-info float-right">Save</button>
+    <button *ngIf="teacher.operation === 'Delete'" (click)="close()" type="submit"
+      class="btn btn-info float-right">Delete</button>
+
+  </form>
+</div>

@@ -1,0 +1,34 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{classSubject.operation}}</h4>
+  <!-- <button type="button" class="close" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button> -->
+</div>
+<div class="modal-body">
+  <div *ngIf="isError" class="alert alert-danger" role="alert">
+    Class - {{classSubject.CLASS}}, Subject - {{classSubject.SUBJECT}} is already present.
+  </div>
+  <form>
+    <div class="form-group">
+      <label for="className">Class</label>
+      <!-- <input type="text" class="form-control" id="className" [(ngModel)]="classSubject.CLASS"
+      placeholder="Enter Class"> -->
+      <select
+        [attr.disabled]="(classSubject.operation === 'Edit' || classSubject.operation === 'Delete') ? 'disabled' : null"
+        class="form-control" id="className" formControlName="className" >
+        <option *ngFor="let class of classes" [value]="class">{{class}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="classStandard">Subject</label>
+      <input type="text" class="form-control" [attr.disabled]="classSubject.operation === 'Delete' ? 'disabled' : null"
+        id="classStandard" formControlName="classStandard" placeholder="Enter Subject">
+    </div>
+
+    <button (click)="cancel()" type="submit" class="btn btn-light ">Cancel</button>
+    <button *ngIf="classSubject.operation !== 'Delete'" (click)="close()" type="submit"
+      class="btn btn-info float-right">Save</button>
+    <button *ngIf="classSubject.operation === 'Delete'" (click)="close()" type="submit"
+      class="btn btn-info float-right">Delete</button>
+  </form>
+</div>

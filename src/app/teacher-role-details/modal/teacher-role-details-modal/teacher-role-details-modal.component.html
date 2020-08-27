@@ -1,0 +1,71 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{teacherRoleDtl.operation}}</h4>
+  <!-- <button type="button" class="close" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button> -->
+</div>
+<div class="modal-body">
+  <div class="form-group">
+    <label for="className">Teacher Name</label>
+    <input type="text" disabled class="form-control"
+      id="TeacherName" [(ngModel)]="teacherRoleDtl.TeacherMstr.Name" placeholder="Teacher Name">
+  </div>
+  <div class="form-group">
+    <label for="class">Class</label>
+    <input type="text" disabled class="form-control" [attr.disabled]="teacherRoleDtl.operation === 'Delete' ? 'disabled' : null"
+      id="class" [(ngModel)]="teacherRoleDtl.Cls_Subject.CLASS" placeholder="class">
+  </div>
+  <div class="form-group">
+    <label for="subject">Subject</label>
+    <input type="text" disabled class="form-control" [attr.disabled]="teacherRoleDtl.operation === 'Delete' ? 'disabled' : null"
+      id="subject" [(ngModel)]="teacherRoleDtl.Cls_Subject.SUBJECT" placeholder="Subject">
+  </div>
+  <div class="form-group">
+    <label for="classStandard">Is Approval</label>
+    <!-- <input type="text" class="form-control" id="classStandard" [(ngModel)]="student.Class"
+      placeholder="Name of Class Standard"> -->
+    <select [attr.disabled]="(teacherRoleDtl.operation === 'Delete') ? 'disabled' : null"
+      class="form-control" id="className" [(ngModel)]="teacherRoleDtl.TeacherRoleDtl.IsAprv">
+      <option value="Y">Yes</option>
+      <option value="N">No</option>
+    </select>
+  </div>
+  <!-- <div class="form-group">
+    <label for="classStandard">Section</label>
+    <input type="text" class="form-control" [attr.disabled]="teacherRoleDtl.operation === 'Delete' ? 'disabled' : null"
+      id="classStandard" [(ngModel)]="teacherRoleDtl.Section" placeholder="Name of Class Standard">
+  </div> -->
+  <!-- <div class="form-group">
+    <label for="classStandard">Date Of Birth</label>
+    <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [ngModel]="student.DOB" ngbDatepicker
+      #d="ngbDatepicker" (change)="onDateChange($event.target.value)" (dateSelect)="onDateSelect($event)">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+    </div>
+  </div> -->
+  <!-- <div class="form-group">
+    <label for="classStandard">Date Of Birth</label> -->
+    <!-- <div class="input-group mb-3">
+
+      <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="student.DOB" ngbDatepicker
+        #d="ngbDatepicker" (change)="onDateChange($event.target.value)" (dateSelect)="onDateSelect($event)">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" (click)="d.toggle()" id="button-addon2"><i
+            class="fa fa-calendar" aria-hidden="true"></i></button>
+      </div>
+    </div> -->
+    <!-- <input type="date" class="form-control " id="inputDOB" placeholder="Date of birth"> -->
+    <!-- <input type="text" [attr.disabled]="student.operation === 'Delete' ? 'disabled' : null"
+      onfocus="(this.type='date')" onblur="(this.type='text')" class="form-control" id="inputDOB"
+      [(ngModel)]="student.DOB" placeholder="DD/MM/YYYY"> -->
+
+    <!-- <div class="input-group-append">
+      <button class="btn btn-outline-secondary calendar" type="button"></button>
+    </div> -->
+  <!-- </div> -->
+  <button (click)="cancel()" type="button" class="btn btn-light ">Cancel</button>
+  <button *ngIf="teacherRoleDtl.operation !== 'Delete'" (click)="close()" type="submit"
+    class="btn btn-info float-right">Save</button>
+  <button *ngIf="teacherRoleDtl.operation === 'Delete'" (click)="close()" type="submit"
+    class="btn btn-info float-right">Delete</button>
+</div>

@@ -1,0 +1,60 @@
+<!-- <app-header></app-header> -->
+<div class="container" style="min-height: 58vh;">
+  <div class="row">
+    <div class="col-12" *ngIf="spinner">
+      <div class="spinner-grow text-info" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <div class="col-12" *ngIf="!spinner">
+      <div class="row">
+        <div class="col-12">
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <button id="createNotification" type="button" class="btn btn-primary btn-circle float-right mt-3"
+                title="Add new Acp" (click)="onAddClick()">
+                <i class="fa fa-plus" style="font-size:1.2rem" aria-hidden="true"></i>
+              </button>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-12 div-with-height-and-scroll">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Month Name</th>
+                <th scope="col">Week No</th>
+                <th scope="col">Working Days</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let acp of acps; index as i">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>
+                  {{acp.month_name}}
+                </td>
+                <td>
+                  {{acp.week_no}}
+                </td>
+                <td>
+                 {{acp.working_days}}
+                </td>
+                <td>
+                  <span style="margin-right: 3%">
+                    <i (click)="oneditClick(acp)" class="fa fa-pencil fa-lg text-warning" aria-hidden="true"></i>
+                  </span>
+                  <span>
+                    <i (click)="ondeleteClick(acp)" class="fa fa-trash fa-lg text-danger" aria-hidden="true"></i>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

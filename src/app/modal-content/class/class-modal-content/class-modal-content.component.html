@@ -1,0 +1,21 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title"></h4>
+    <!-- <button type="button" class="close" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button> -->
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="className">Class Name</label>
+      <input type="text" class="form-control" id="className" [(ngModel)]="class.class_name"
+        placeholder="Name of Class">
+    </div>
+    <div class="form-group">
+      <label for="classStandard">Class Standard</label>
+      <input type="text" class="form-control" id="classStandard" [(ngModel)]="class.class_standard"
+        placeholder="Name of Class Standard">
+    </div>
+    <button (click)="cancel()" type="submit" class="btn btn-secondary ">Cancel</button>
+    <button (click)="close()" type="submit" class="btn btn-primary float-right">Save</button>
+  </div>
+  
