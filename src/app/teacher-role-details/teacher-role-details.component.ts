@@ -4,6 +4,7 @@ import { RestService } from '../rest.service';
 import { Configuration } from '../app.constant';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TeacherRoleDetailsModalComponent } from './modal/teacher-role-details-modal/teacher-role-details-modal.component';
+import { TeacherRoleDtl } from '../Models/TeacherRoleDtl';
 
 @Component({
   selector: 'app-teacher-role-details',
@@ -48,13 +49,19 @@ export class TeacherRoleDetailsComponent implements OnInit {
   openModal(_teacherRoleDtl: TeacherRoleDtlVM) {
     const modalRef = this.modalService.open(TeacherRoleDetailsModalComponent);
     modalRef.componentInstance.teacherRoleDtl = _teacherRoleDtl;
+    // modalRef.componentInstance.teacherRoleDtls = this.teacherRoleDtls;
     // modalRef.componentInstance.students = this.teacherRoleDtls;
 
     modalRef.result.then((data) => {
       if (data as TeacherRoleDtlVM) {
         this.spinner = true;
-        this.svc.addUpdDel('TeacherRoleDtls', data).subscribe(
+        debugger;
+        let tchRoldDtl = new TeacherRoleDtl();
+        tchRoldDtl = data.TeacherRoleDtl;
+        tchRoldDtl.operation = data.operation;
+        this.svc.addUpdDel('TeacherRoleDtls', tchRoldDtl).subscribe(
           res => {
+            debugger;
             this.spinner = false;
             if ('Add' === data.operation ||
               'Delete' === data.operation) {
@@ -62,7 +69,7 @@ export class TeacherRoleDetailsComponent implements OnInit {
             }
 
           },
-          err => { this.spinner = false; }
+          err => { this.spinner = false; debugger; }
         );
       }
       console.log(data);

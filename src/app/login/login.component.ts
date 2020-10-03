@@ -29,6 +29,13 @@ export class LoginComponent implements OnInit {
   // convenience getter for easy access to form fields
   get f() { return this.loginForm.controls; }
 
+  onchnage(): void {
+    // formData.form.controls['email'].setErrors(null);
+    // this.loginForm.valid = true;
+    this.loginForm.controls['userid'].setErrors(null);
+    this.loginForm.controls['pass'].setErrors(null);
+  }
+
   checkLogin(): void {
     this.submitted = true;
 
@@ -41,7 +48,7 @@ export class LoginComponent implements OnInit {
     this.svc.getAll<TeacherMstr[]>('TeacherMstr').subscribe(
       res => {
         this.teachers = res;
-        const filteredTeacher = res.filter(e=> e.TeacherLoginID == this.f.userid.value &&
+        const filteredTeacher = res.filter(e => e.TeacherLoginID == this.f.userid.value &&
           e.LoginPwd == this.f.pass.value && e.IsAdmin === 'Y')[0];
         if (undefined !== filteredTeacher && null !== filteredTeacher) {
           this.spinner = false;
@@ -51,6 +58,7 @@ export class LoginComponent implements OnInit {
           this.spinner = false;
           // user doesnt exixt error
           this.loginForm.controls['userid'].setErrors({'incorrect': true});
+          this.loginForm.controls['pass'].setErrors({'incorrect': true});
         }
       },
       err => { this.spinner = false; }

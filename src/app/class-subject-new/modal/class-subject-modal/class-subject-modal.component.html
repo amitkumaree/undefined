@@ -8,7 +8,7 @@
   <div *ngIf="isError" class="alert alert-danger" role="alert">
     Class - {{classSubject.CLASS}}, Subject - {{classSubject.SUBJECT}} is already present.
   </div>
-  <form>
+  <form [formGroup]="subjectForm">
     <div class="form-group">
       <label for="className">Class</label>
       <!-- <input type="text" class="form-control" id="className" [(ngModel)]="classSubject.CLASS"

@@ -3,4 +3,5 @@ export class TeacherRoleDtl {
   public TeacherId: number;
   public ClsSubjectID: number;
   public IsAprv: string;
+  public operation: string;
 }

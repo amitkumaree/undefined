@@ -13,16 +13,23 @@ export class ClassSubjectModalComponent implements OnInit {
   @Input() public classSubjects: Cls_Subject[] = [];
   classes: string[] = [];
   isError = false;
-  form: FormGroup;
+  subjectForm: FormGroup;
   constructor(public activeModal: NgbActiveModal, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     debugger;
-    this.form = this.formBuilder.group({
+    this.subjectForm = this.formBuilder.group({
       className: ['', Validators.required],
       classStandard: ['', Validators.required],
     });
-    this.getAllClass()
+    if (this.classSubject.operation === 'Edit' ||
+      this.classSubject.operation === 'Delete') {
+      this.subjectForm.patchValue({
+        className: this.classSubject.CLASS,
+        classStandard: this.classSubject.SUBJECT
+      });
+    }
+    this.getAllClass();
   }
 
   close(): void {

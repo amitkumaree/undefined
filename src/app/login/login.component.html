@@ -9,7 +9,7 @@
         <div class="form-group">
           <label>Login Id</label>
           <input type="text" formControlName="userid" class="form-control" [attr.disabled]="spinner ? 'disabled' : null"
-            [ngClass]="{ 'is-invalid': submitted && f.userid.errors }" placeholder="Enter User Id" />
+            [ngClass]="{ 'is-invalid': submitted && f.userid.errors }" placeholder="Enter User Id" (change)="onchnage()"  />
           <div *ngIf="submitted && f.userid.errors" class="invalid-feedback">
             <div *ngIf="f.userid.errors.required">User Id is required</div>
           </div>
@@ -18,7 +18,7 @@
           <label>Pass word</label>
           <input type="password" formControlName="pass" class="form-control"
             [attr.disabled]="spinner ? 'disabled' : null" [ngClass]="{ 'is-invalid': submitted && f.pass.errors }"
-            placeholder="Enter password" />
+            placeholder="Enter password" (change)="onchnage()" />
           <div *ngIf="submitted && f.pass.errors" class="invalid-feedback">
             <div *ngIf="f.pass.errors.required">Password is required</div>
           </div>
